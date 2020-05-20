@@ -1,0 +1,36 @@
+{
+  "name": "@inwebo/physx.js",
+  "version": "0.0.1",
+  "description": "Javascript physics component",
+  "main": "src/index.js",
+  "keywords": [
+    "ES6"
+  ],
+  "author": "inwebo-veritas",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "mocha": "^7.0.0",
+    "nyc": "^15.0.0",
+    "qunit": "^2.9.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "contributors": [
+    "Inwebo veritas <github@inwebo.net> (https://inwebo.github.io/Physx.js/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:inwebo/Physx.js.git"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "scripts": {
+    "test": "webpack --mode development && nyc --reporter=html --reporter=text mocha dist/test.min.js"
+  }
+}
