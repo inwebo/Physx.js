@@ -20,7 +20,20 @@ export default class Kinetics {
         entity.getAcceleration().add(force);
     }
 
-    static gravity(entity) {
-        
+    /**
+     * @param {Entity} entity
+     * @param {Number} value
+     */
+    static gravity(entity, value = 0.1) {
+        const gravity = new Vector2D(0, entity.getMass() * value)
+        Kinetics.force(entity, gravity);
+    }
+
+    /**
+     * @param {Entity} entity
+     * @param {Number} coefficient
+     */
+    static friction(entity, coefficient = 0.01) {
+        const friction = entity.getVelocity().clone();
     }
 }
