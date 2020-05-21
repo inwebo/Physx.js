@@ -34,6 +34,14 @@ export default class Kinetics {
      * @param {Number} coefficient
      */
     static friction(entity, coefficient = 0.01) {
+        const normal      = 1;
+        const frictionMag = coefficient * normal;
+
         const friction = entity.getVelocity().clone();
+        friction.multiplyScalar(-1);
+        friction.normalize();
+        friction.multiplyScalar(frictionMag);
+
+        Kinetics.force(entity, friction);
     }
 }
