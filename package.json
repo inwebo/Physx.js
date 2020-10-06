@@ -14,9 +14,11 @@
     "@babel/preset-env": "^7.8.3",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
+    "lodash": "^4.17.15",
     "mocha": "^7.0.0",
     "nyc": "^15.0.0",
     "qunit": "^2.9.3",
+    "serve": "^11.3.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
@@ -28,8 +30,7 @@
     "url": "git@github.com:inwebo/Physx.js.git"
   },
   "dependencies": {
-    "@inwebo/vector": "^0.0",
-    "lodash": "^4.17.15"
+    "@inwebo/vector": "^0.0"
   },
   "scripts": {
     "test": "webpack --mode development && nyc --reporter=html --reporter=text mocha dist/test.min.js"
