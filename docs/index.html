@@ -1,357 +1,39 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    &lt;!&ndash; Global site tag (gtag.js) - Google Analytics &ndash;&gt;-->
-<!--&lt;!&ndash;    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166786698-1"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;    <script>&ndash;&gt;-->
-<!--&lt;!&ndash;        window.dataLayer = window.dataLayer || [];&ndash;&gt;-->
-<!--&lt;!&ndash;        function gtag(){dataLayer.push(arguments);}&ndash;&gt;-->
-<!--&lt;!&ndash;        gtag('js', new Date());&ndash;&gt;-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Physx.js</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Physx.js</h1>
+            <h2>Demo</h2>
+            <figure class="">
+                <canvas id="demo-1" width="640" height="480" style="background-color: whitesmoke; min-width: 100%; max-width: 100%" alt="Physx.js demonstration 1"></canvas>
+                <figcaption>
+                    A moving particle
+                </figcaption>
+            </figure>
+        </div>
+    </div>
 
-<!--&lt;!&ndash;        gtag('config', 'UA-166786698-1');&ndash;&gt;-->
-<!--&lt;!&ndash;    </script>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
-<!--&lt;!&ndash;    <title>Sprite.js the most simple way to manipulate sprite with Javascript</title>&ndash;&gt;-->
-<!--&lt;!&ndash;    &lt;!&ndash; Fonts and CSS Reset &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">&ndash;&gt;-->
-
-<!--&lt;!&ndash;    &lt;!&ndash; PrismJS: Syntax Highlighting &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/themes/prism.min.css">&ndash;&gt;-->
-<!--&lt;!&ndash;    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/normalize-whitespace/prism-normalize-whitespace.js"></script>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    &lt;!&ndash; Font Awesome &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/solid.css">&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/fontawesome.css">&ndash;&gt;-->
-
-<!--&lt;!&ndash;    &lt;!&ndash; Mustard UI &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">&ndash;&gt;-->
-
-<!--&lt;!&ndash;    &lt;!&ndash; Overriding UI &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="assets/css/style.css">&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <meta name="description" content="Sprite.js Use sprite sheet, sprite, animated sprite and transparency colors with ease."/>&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="canonical" href="index.html" />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta property="og:locale" content="en_US" />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta property="og:type" content="website" />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta property="og:title" content="Sprite.js a simple sprite javascript made with ♥." />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta property="og:description" content="Smart javascript Canvas API use." />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta property="og:url" content="index.html" />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta property="og:site_name" content="Sprite.js" />&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;    <meta property="og:image" content="wp-content/uploads/2018/04/mustard-ui-image.png" />&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;    <meta property="og:image:secure_url" content="wp-content/uploads/2018/04/mustard-ui-image.png" />&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;    <meta property="og:image:width" content="600" />&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;    <meta property="og:image:height" content="315" />&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <meta name="twitter:card" content="summary_large_image" />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta name="twitter:description" content="Sprite.js Use sprite sheet, sprite, animated sprite and transparency colors with ease." />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta name="twitter:title" content="Sprite.js a simple sprite javascript made with ♥." />&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta name="twitter:site" content="@inwebo/sprite.js" />&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;    <meta name="twitter:image" content="wp-content/uploads/2018/04/mustard-ui-image.png" />&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta name="twitter:creator" content="@inwebo/sprite.js" />&ndash;&gt;-->
-
-<!--</head>-->
-<!--<body>-->
-<!--<header>-->
-<!--    <canvas id="mario-sheet" style="border: black solid 10px; display: none" width="50" height="32"></canvas>-->
-<!--    <h1 class="title">Sprite.js <canvas id="mario-walking" width="16" height="32"></canvas></h1>-->
-<!--    <h2 class="subtitle">Use sprite sheet, sprite, animated sprite and transparency colors with ease.</h2>-->
-<!--    <p class="disclaimer">-->
-<!--        <img title="Discover Sprite.js activity on github by Inwebo veritas" alt="Sprite.js activity by Inwebo veritas" src="https://img.shields.io/github/commit-activity/w/inwebo/sprite.js">-->
-<!--        <img title="Discover Sprite.js repository on github by Inwebo veritas" alt="Sprite.js repository size by Inwebo veritas" src="https://img.shields.io/github/repo-size/inwebo/Sprite.js?logo=Sprite.js">-->
-<!--        <img title="Sprite.js version on github" alt="Sprite.js version size by Inwebo veritas"-->
-<!--             src="https://img.shields.io/github/package-json/v/inwebo/Sprite.js?logo=Sprite.js">-->
-<!--        <img title="Sprite.js version last commit by Inwebo veritas on github" alt="Sprite.js last activity by Inwebo veritas" src="https://img.shields.io/github/last-commit/inwebo/sprite.js">-->
-<!--    </p>-->
-<!--&lt;!&ndash;    <button class="get-started button button-primary button-large">Let's rock</button>&ndash;&gt;-->
-
-<!--    <a class="scroll-down" href="#content" title="Discover Sprite.js on github by Inwebo veritas"></a>-->
-<!--</header>-->
-
-<!--<main id="content">-->
-<!--    <section>-->
-<!--        <ul class="breadcrumbs">-->
-<!--            <li><a title="Inwebo veritas" href="https://github.com/inwebo">Inwebo</a></li>-->
-<!--            <li><a title="Inwebo veritas Sprites.js" href="https://github.com/inwebo/Sprite.js">Sprite.js</a></li>-->
-<!--            <li>Documentation</li>-->
-<!--        </ul>-->
-<!--    </section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col col-lg-3">-->
-<!--                <div class="sidebar sidebar-left">-->
-<!--                    <h3 class="sidebar-category"><a title="How to use Sprite.js" href="#quick-start">Quick start</a></h3>-->
-<!--                    <ul class="sidebar-links">-->
-<!--                        <li><a title="Sprite.js features" href="#features">Features</a></li>-->
-<!--                        <li><a title="Sprite.js requirements" href="#requirements">Requirements</a></li>-->
-<!--                        <li><a title="Sprite.js installation" href="#installation">Install</a></li>-->
-<!--                        <li><a title="Sprite.js how to" href="#main-logic">Main logic</a></li>-->
-<!--                    </ul>-->
-<!--                    <h3 class="sidebar-category"><a title="Sprite.js dependencies" href="#dependencies">Dependencies</a></h3>-->
-<!--                    <ul class="sidebar-links">-->
-<!--                        <li><a title="Sprite.js dependency Render.js class" href="#render-js">Render.js</a></li>-->
-<!--                        <li><a title="Sprite.js dependency Vector class" href="#vector">Vector</a></li>-->
-<!--                    </ul>-->
-<!--                    <h3 class="sidebar-category"><a title="Sprite.js's dependencies class explore them" href="#class">Class</a></h3>-->
-<!--                    <ul class="sidebar-links">-->
-<!--                        <li><a title="Sprite.js's class Sprite.js" href="#sprite-js">Sprite.js</a></li>-->
-<!--                        <li><a title="Sprite.js's class Rgb.js" href="#rgb">Rgb.js</a></li>-->
-<!--                        <li><a title="Sprite.js's class AnimatedSprite.js" href="#animated-sprite">AnimatedSprite.js</a></li>-->
-<!--                        <li><a title="Sprite.js's class SpriteMap.js" href="#sprite-map">SpriteMap.js</a></li>-->
-<!--                        <li><a title="Sprite.js's class RenderSheet.js" href="#render-sheet">RenderSheet.js</a></li>-->
-<!--                        <li><a title="Sprite.js's class RenderSprite.js" href="#render-sprite">RenderSprite.js</a></li>-->
-<!--                    </ul>-->
-<!--                    <h3 class="sidebar-category"><a title="Sprite.js's use cases" href="#demos">Demos</a></h3>-->
-<!--                    <ul class="sidebar-links">-->
-<!--                        <li><a title="Bootstrap Sprite.js project" href="#bootstrap-sprite-js">Bootstrap</a></li>-->
-<!--                        <li><a title="Use Sprite.js to load a sprite sheet" href="#sprite-sheet-src">Load sprite sheet</a></li>-->
-<!--                        <li><a title="Use Sprite.js to draw a sprite" href="#sprite-draw">Draw sprite</a></li>-->
-<!--                        <li><a title="Use Sprite.js to draw a sprite with transparency color" href="#sprite-transparency-draw">Draw sprite transparency</a></li>-->
-<!--                        <li><a title="Use Sprite.js to load an animated sprite sheet" href="#animated-sprite-load">Load animated sprite</a></li>-->
-<!--                        <li><a title="Use Sprite.js to draw an animated sprite sheet" href="#animated-sprite-draw">Draw animated sprite</a></li>-->
-<!--                        <li><a title="Use Sprite.js to load a SiteMap object" href="#spritemap-object-load">Load SpriteMap object</a></li>-->
-<!--                        <li><a title="Use Sprite.js to draw a SiteMap object" href="#spritemap-object-draw">Draw SpriteMap object</a></li>-->
-<!--                    </ul>-->
-<!--                    <h3 class="sidebar-category"><a title="Sprite.js's use cases" href="#help">Help</a></h3>-->
-<!--                    <ul class="sidebar-links">-->
-<!--                        <li><a title="Sprite.js bug report" href="https://github.com/inwebo/Sprite.js/issues" target="_blank">Bug report</a></li>-->
-<!--                        <li><a title="Sprite sheet resources" href="#sprite-sheet-assets">Assets</a></li>-->
-<!--                        <li><a title="Sprite sheet resources" href="#one-love">One love</a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col col-lg-9">-->
-
-<!--                <section id="quick-start">-->
-<!--                    <h4 id="features">Features</h4>-->
-<!--                    <ul>-->
-<!--                        <li>Smart javascript <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" title="Javascript canvas API">Canvas API</a> use.</li>-->
-<!--                        <li>One Job</li>-->
-<!--                        <li>Light weight</li>-->
-<!--                        <li>Easy to understand <cite lang="fr">Pas de foutaises !</cite></li>-->
-<!--                        <li>Modern Javascript (ES6), OOP ready. Extends a class and forget about javascript <cite>prototype</cite></li>-->
-<!--                        <li>Manipulate color transparency</li>-->
-<!--                        <li>Animate sprite as you want, choose your frames and animation duration. With SpriteMap object.</li>-->
-<!--                    </ul>-->
-<!--                    <br />-->
-<!--                    <hr>-->
-<!--                    <br />-->
-<!--                    <h4 id="requirements">Requirements</h4>-->
-<!--                    <p>-->
-<!--                        You <strong>must</strong> understand the canvas API, you <strong>must</strong> know ES6 and Node.js compilation. If you need help i'm available here <a title="Inwebo veritas on github" href="https://github.com/inwebo" target="_blank">github</a>.-->
-<!--                    </p>-->
-<!--                    <br />-->
-<!--                    <hr>-->
-<!--                    <br />-->
-<!--                    <h4 id="installation">Installation</h4>-->
-<!--                    <pre class=" language-bash"><code class=" language-bash">npm install @inwebo/sprite.js</code></pre>-->
-<!--                    <br />-->
-<!--                    <hr>-->
-<!--                    <br />-->
-<!--                    <h4 id="main-logic">Main logic</h4>-->
-<!--                    <div class="stepper">-->
-<!--                        <div class="step">-->
-<!--                            <p class="step-number">1</p>-->
-<!--                            <p class="step-title">Prepare a sprite sheet, sprite, image.</p>-->
-<!--                            <p>A <a href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">sprite sheet</a> is basically an image. It must be readable in your application.</p>-->
-<!--                        </div>-->
-<!--                        <div class="step">-->
-<!--                            <p class="step-number">2</p>-->
-<!--                            <p class="step-title"><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage">Draw</a> your image on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas</a>  or <a href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas">off screen canvas</a></p>-->
-<!--                            <p>Draw image on a canvas API with drawImage method.</p>-->
-<!--                        </div>-->
-<!--                        <div class="step">-->
-<!--                            <p class="step-number">3</p>-->
-<!--                            <p class="step-title">Map your sprites.</p>-->
-<!--                            <p>Sprite.js <strong>must</strong> know all sprites origin and dimensions. It is the most boring part of this job, and its yours&nbsp;!</p>-->
-<!--                        </div>-->
-<!--                        <div class="step">-->
-<!--                            <p class="step-number">4</p>-->
-<!--                            <p class="step-title">Read sprite pixels.</p>-->
-<!--                            <p>Read pixels data as rgba color with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a> see <a href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData">ImageData</a> for details, they are now available for manipulation.</p>-->
-<!--                        </div>-->
-<!--                        <div class="step">-->
-<!--                            <p class="step-number">5</p>-->
-<!--                            <p class="step-title">Finally manipulate and draw pixels on your scene.</p>-->
-<!--                            <p>Draw pixel on target canvas</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </section>-->
-
-<!--                <section id="dependencies">-->
-<!--                    <h4 id="render-js"><a title="Render.js javascript class, abstract the boring parts of canvas rendering" href="https://github.com/inwebo/Render.js">Render.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Render to canvas utility class, abstract the boring parts. (not required).-->
-<!--                    </p>-->
-<!--                    <h4 id="vector"><a title="Simple 2D vector representation." href="https://github.com/inwebo/Vector">Vector</a></h4>-->
-<!--                    <p>-->
-<!--                        Vector manipulation needed for RGB representation. (required)-->
-<!--                    </p>-->
-<!--                </section>-->
-
-<!--                <section id="class">-->
-<!--                    <h4 id="sprite-js"><a href="https://github.com/inwebo/Sprite.js/blob/master/src/Sprite/Sprite.js" target="_blank">Sprite.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Representation of a sprite as ImageData object. May manipulate pixels to apply transparency to one color.-->
-<!--                    </p>-->
-<!--                    <h4 id="rgb"><a href="https://github.com/inwebo/Sprite.js/blob/master/src/Rgb/Rgb.js" target="_blank">Rgb.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Utility class, representation of RGB color.-->
-<!--                    </p>-->
-<!--                    <h4 id="animated-sprite"><a href="https://github.com/inwebo/Sprite.js/blob/master/src/AnimatedSprite/AnimatedSprite.js" target="_blank">AnimatedSprite.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Sprite collection to animate, may have a duration (ms).-->
-<!--                    </p>-->
-<!--                    <h4 id="sprite-map"><a href="https://github.com/inwebo/Sprite.js/blob/master/src/SpriteMap/SpriteMap.js" target="_blank">SpriteMap.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Utility class, will build animated sprites from a json file map. See doom.json for information.-->
-<!--                    </p>-->
-<!--                    <h4 id="render-sheet"><a href="https://github.com/inwebo/Sprite.js/blob/master/src/RenderSheet/RenderSheet.js" target="_blank">RenderSheet.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Utility class to draw image on canvas.-->
-<!--                    </p>-->
-<!--                    <h4 id="render-sprite"><a href="https://github.com/inwebo/Sprite.js/blob/master/src/RenderSprite/RenderSprite.js" target="_blank">RenderSprite.js</a></h4>-->
-<!--                    <p>-->
-<!--                        Utility class to draw image on canvas, may use Sprite transparency.-->
-<!--                    </p>-->
-<!--                </section>-->
-
-<!--                <section id="demos">-->
-<!--                    <h4 id="bootstrap-sprite-js">How to bootstrap your project ?</h4>-->
-<!--                    <h5>Download and map a sprite sheet</h5>-->
-<!--                    <div class="row">-->
-<!--                        <div class="col col-lg-1">-->
-<!--                            <figure>-->
-<!--                                <img src="assets/img/doom.png" />-->
-<!--                            </figure>-->
-<!--                        </div>-->
-<!--                        <div class="col col-lg-11">-->
-<!--                            This is our sprite sheet rendered on canvas. Its dimensensions are, <code>widht = 52px</code>,-->
-<!--                            <code>height: 265px</code>. It contains 4 frames, each frames got same dimension, <code>widht = 42px</code> and-->
-<!--                            <code>height: 60px</code>, the transparency color is <code>rgb(255, 0, 255)</code>.-->
-<!--                            Origins : Sheet origin<code>0, 0 (top left corner)</code>, <code>Frame 1: 5, 5</code>, <code>Frame 2: 5, 70</code>, <code>Frame 3: 5, 135</code>, <code>Frame 4: 5, 200</code>.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <pre class=" language-javascript">-->
-<!--                        <code class=" language-javascript">-->
-
-<!--                            window.addEventListener("DOMContentLoaded", (event) => {-->
-
-<!--                                // Sheet is fully loaded callback-->
-<!--                                marioSheetImage.onload = (e) => {-->
-<!--                                    // Render sheet, its pixels are now available-->
-<!--                                    renderMarioSheetRender.draw(marioSheetImage);-->
-
-<!--                                    // Load animation config-->
-<!--                                    fetch("mario.json")-->
-<!--                                        .then((response) => {-->
-<!--                                            return response.json();-->
-<!--                                        })-->
-<!--                                        .then((json) => {-->
-<!--                                            try {-->
-
-<!--                                                const frames = [];-->
-
-<!--                                                frames.push(renderMarioSheetRender.getCtx().getImageData(0, 0, 16, 32));-->
-<!--                                                frames.push(renderMarioSheetRender.getCtx().getImageData(17, 0, 16, 32));-->
-<!--                                                frames.push(renderMarioSheetRender.getCtx().getImageData(34, 0, 16, 32));-->
-
-<!--                                                const marioWalking = new AnimatedSprite(frames);-->
-
-<!--                                                // And animate it-->
-<!--                                                setInterval(() => {-->
-<!--                                                    renderMarioSpriteRender.draw(marioWalking);-->
-<!--                                                    marioWalking.step();-->
-<!--                                                }, 100);-->
-
-<!--                                            } catch (e) {-->
-<!--                                                console.log(e);-->
-<!--                                            }-->
-<!--                                        });-->
-
-<!--                                };-->
-
-<!--                                marioSheetImage.src = sheerSrc;-->
-<!--                            });-->
-<!--                        </code>-->
-<!--                    </pre>-->
-<!--                    <h4 id="sprite-sheet-src">How to load a sprite sheet ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-
-<!--                    <h4 id="sprite-draw">How to draw a sprite sheet ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-
-<!--                    <h4 id="sprite-transparency-draw">How to load an animated sprite with transparency ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-
-
-<!--                    <h4 id="animated-sprite-load">How to load an animated sprite ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-
-<!--                    <h4 id="animated-sprite-draw">How to draw an animated sprite ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-
-
-<!--                    <h4 id="spritemap-object-load">How to load an animated sprite with AnimatedSprite.js object ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-
-<!--                    <h4 id="spritemap-object-draw">How to draw an animated sprite with AnimatedSprite.js object ?</h4>-->
-<!--                    <p>-->
-
-<!--                    </p>-->
-<!--                </section>-->
-
-<!--                <section id="help">-->
-
-<!--                    <h4 id="one-love">Thanks</h4>-->
-<!--                    <ul>-->
-<!--                        <li>Mustard ui</li>-->
-<!--                    </ul>-->
-<!--                </section>-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</main>-->
-
-<!--<footer>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col col-lg-5">-->
-<!--                <div class="footer-text">-->
-<!--                    <h5 class="h3">Inwebo veritas</h5>-->
-<!--                    <p>This is an example of the footer component. You don't have to use this layout, but it's a good-->
-<!--                        example of what you can do with what's provided. If you wanted to included more columns for-->
-<!--                        links and remove this text block, you can.</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col col-sm-6 col-lg-3 col-lg-offset-1">-->
-<!--                <h5 class="footer-links-category">Discover my javascript projects</h5>-->
-<!--                <ul class="footer-links">-->
-<!--                    <li><a title="Simple way to draw on canvas with Render.js" href="https://github.com/inwebo/Render.js">Render.js</a></li>-->
-<!--                    <li><a title="Javascript vector implementation" href="https://github.com/inwebo/Vector">Vector</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--&lt;!&ndash;@todo&ndash;&gt;-->
-<!--&lt;!&ndash;    <p class="copyright align-center">Made by <img src="logo-ico.png" width="16" height="16" alt="Inwebo veritas" title="Inwebo veritas logo"> (Inwebo Veritas).</p>&ndash;&gt;-->
-
-<!--</footer>-->
-<!--<script type="application/javascript" src="assets/js/mario.min.js"></script>-->
-<!--</body>-->
-<!--</html>-->
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="demo">
+                <fieldset>
+                    <legend>Acceleration</legend>
+                    <label for="x">X</label><input type="range" id="x" name="cols" min="1" max="50" value="40">
+                        <br>
+                    <label for="y">Y</label><input type="range" id="y" name="cols" min="1" max="50" value="40">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" src="./assets/js/app.min.js"></script>
+</body>
+</html>

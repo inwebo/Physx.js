@@ -1,7 +1,7 @@
 import { Vector2D } from "@inwebo/vector";
 import Entity from "../Entity/Entity";
 
-export default class Kinetics {
+export default class Forces {
     /**
      * @param {Entity} entity
      */
@@ -26,7 +26,7 @@ export default class Kinetics {
      */
     static gravity(entity, value = 0.1) {
         const gravity = new Vector2D(0, entity.getMass() * value)
-        Kinetics.force(entity, gravity);
+        Forces.force(entity, gravity);
     }
 
     /**
@@ -42,6 +42,6 @@ export default class Kinetics {
         friction.normalize();
         friction.multiplyScalar(frictionMag);
 
-        Kinetics.force(entity, friction);
+        Forces.force(entity, friction);
     }
 }
