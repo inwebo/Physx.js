@@ -2,19 +2,23 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: './src/index.js'
+        main: './src/index.js',
+        app: './docs/assets/js/app.js',
+        demo1: './docs/assets/js/demos/demo-1.js'
     },
     output: {
-        filename: '[name].min.js',
-        path: path.join(__dirname, 'dist'),
+        filename: (pathData) => {
+            switch (pathData.chunk.name) {
+                case 'main':
+                    return 'dist/[name].min.js';
+                case 'app':
+                    return 'docs/assets/js/[name].min.js';
+                case 'demo1':
+                    return 'docs/assets/js/demos/[name].min.js';
+                default:
+                    break;
+            }
+        },
+        path: path.resolve(__dirname, '.'),
     },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                include: path.resolve(__dirname, 'src'),
-                loader: 'babel-loader'
-            },
-        ]
-    }
 };
