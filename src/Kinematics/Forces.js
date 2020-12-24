@@ -1,5 +1,4 @@
 import { Vector2D } from "@inwebo/vector";
-import Entity from "../Entity/Entity";
 
 export default class Forces {
     /**
