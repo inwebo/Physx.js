@@ -1,11 +1,10 @@
 import { Vector2D } from "@inwebo/vector";
-import Entity from "../Entity/Entity";
 
 export default class Forces {
     /**
      * @param {Entity} entity
      */
-    static move(entity) {
+    static translate(entity) {
         entity.getVelocity().add(entity.getAcceleration());
         entity.getPosition().add(entity.getVelocity());
         entity.getAcceleration().zero();
