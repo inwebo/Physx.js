@@ -30,6 +30,7 @@
     "url": "git@github.com:inwebo/Physx.js.git"
   },
   "dependencies": {
+    "@inwebo/render.js": "^0.0.11",
     "@inwebo/vector": "^0.0"
   },
   "scripts": {
