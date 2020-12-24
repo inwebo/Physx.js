@@ -4,7 +4,7 @@ export default class Forces {
     /**
      * @param {Entity} entity
      */
-    static translate(entity) {
+    static move(entity) {
         entity.getVelocity().add(entity.getAcceleration());
         entity.getPosition().add(entity.getVelocity());
         entity.getAcceleration().zero();
