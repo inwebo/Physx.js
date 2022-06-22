@@ -1,7 +1,7 @@
-import {Entity} from "../../../../src";
+import {Entity} from "@/index";
 import {Vector2D} from "@inwebo/vector";
 import EntityRenderer from "../renderers/EntityRenderer";
-import Forces from "../../../../src/Kinematics/Forces";
+import Forces from "@/Kinematics/Forces";
 
 const demo1 = () => {
     const rand = (a,b) => a+(b-a+1)*crypto.getRandomValues(new Uint32Array(1))[0]/2**32|0;
